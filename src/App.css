@@ -207,9 +207,28 @@ body.journey-is-open { overflow: hidden; }
 .journey__warp {
   position: absolute;
   inset: -30%;
-  opacity: .65;
-  background: repeating-conic-gradient(from 8deg, transparent 0deg 2deg, rgba(255, 230, 100, .3) 2.4deg 2.8deg, transparent 3.3deg 13deg);
+  opacity: .72;
+  background: repeating-conic-gradient(from 8deg, transparent 0deg 1.2deg, rgba(255, 230, 100, .34) 1.5deg 2.2deg, transparent 2.8deg 15deg);
   mask-image: radial-gradient(ellipse at center, transparent 0 8%, black 42%, transparent 73%);
+}
+.journey__warp::before,
+.journey__warp::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, transparent 0 10%, black 38%, transparent 76%);
+}
+.journey__warp::before {
+  background: repeating-conic-gradient(from 31deg, transparent 0deg 4deg, rgba(255, 249, 203, .28) 4.5deg 5deg, transparent 5.8deg 23deg);
+  mask-image: radial-gradient(ellipse at center, transparent 0 11%, black 28% 53%, transparent 69%);
+  transform: rotate(7deg) scale(.92);
+}
+.journey__warp::after {
+  background: repeating-conic-gradient(from 74deg, transparent 0deg 1deg, rgba(245, 201, 40, .22) 1.2deg 1.8deg, transparent 2.4deg 9deg);
+  mask-image: radial-gradient(ellipse at center, transparent 0 8%, black 35% 64%, transparent 82%);
+  transform: rotate(-11deg) scale(1.08);
+  opacity: .8;
 }
 .journey__stars {
   position: absolute;
