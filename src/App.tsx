@@ -121,9 +121,6 @@ function App() {
             <button className="journey__arrival-light" type="button" onClick={() => setFinalActive(true)} aria-label="Abrir mensaje de llegada" />
             <p className="journey__arrival-hint">llegaste · pulsa la luz</p>
           </div>
-          <div className="journey__controls">
-            <button type="button" onClick={() => { setFinalActive(false); setJourneyActive(false) }}>Salir ×</button>
-          </div>
           <p className="journey__speed">fuerza de velocidad <span>••••••••</span></p>
         </section>
       )}
