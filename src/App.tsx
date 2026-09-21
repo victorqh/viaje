@@ -38,11 +38,19 @@ const phraseVectors = [
 
 function App() {
   const [journeyActive, setJourneyActive] = useState(false)
-  const [journeyPaused, setJourneyPaused] = useState(false)
+  const [finalActive, setFinalActive] = useState(false)
+
+  const startJourney = () => {
+    setFinalActive(false)
+    setJourneyActive(true)
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setJourneyActive(false)
+      if (event.key === 'Escape') {
+        setFinalActive(false)
+        setJourneyActive(false)
+      }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
@@ -57,11 +65,8 @@ function App() {
     <main>
       <section className="hero" aria-labelledby="hero-title">
         <div className="stars" aria-hidden="true" />
-        <div className="orbit orbit--one" aria-hidden="true" />
-        <div className="orbit orbit--two" aria-hidden="true" />
-
         <div className="hero__copy" id="top">
-          <button className="hero-flower-button" type="button" onClick={() => setJourneyActive(true)} aria-label="Comenzar el viaje">
+          <button className="hero-flower-button" type="button" onClick={startJourney} aria-label="Comenzar el viaje">
             <span className="hero-flower" aria-hidden="true">
               <span className="flower__petals" />
               <span className="flower__center" />
@@ -70,20 +75,8 @@ function App() {
         </div>
       </section>
 
-      <section className="garden" id="garden" aria-labelledby="garden-title">
-        <div className="garden__heading">
-          <p className="eyebrow">capítulo uno / la llegada</p>
-          <h2 id="garden-title">Contigo,<br /><i>todo es mejor.</i></h2>
-        </div>
-        <div className="garden__message">
-          <p>Hay lugares que no aparecen en ningún mapa. Este se encuentra entre una sonrisa, una flor y todo lo que todavía falta por descubrir.</p>
-          <span className="garden__signature">— siempre tuyo, el jardín</span>
-        </div>
-        <div className="garden__flower" aria-hidden="true"><span className="flower__petals" /><span className="flower__center" /><span className="flower__stem" /></div>
-      </section>
-
       {journeyActive && (
-        <section className={`journey ${journeyPaused ? 'journey--paused' : ''}`} aria-label="Viaje por la galaxia de flores">
+        <section className="journey" aria-label="Viaje por la galaxia de flores">
           <div className="journey__warp" aria-hidden="true" />
           <div className="journey__stars" aria-hidden="true">
             <span className="journey__stars-layer" />
@@ -124,17 +117,27 @@ function App() {
               </p>
             ))}
           </div>
-          <div className="journey__center">
-            <p className="eyebrow">viaje 001 / en órbita</p>
-            <h2>Siempre<br /><i>contigo.</i></h2>
+          <div className="journey__arrival">
+            <button className="journey__arrival-light" type="button" onClick={() => setFinalActive(true)} aria-label="Abrir mensaje de llegada" />
+            <p className="journey__arrival-hint">llegaste · pulsa la luz</p>
           </div>
           <div className="journey__controls">
-            <button type="button" onClick={() => setJourneyPaused((paused) => !paused)}>
-              {journeyPaused ? 'Continuar viaje' : 'Pausar viaje'}
-            </button>
-            <button type="button" onClick={() => setJourneyActive(false)}>Salir ×</button>
+            <button type="button" onClick={() => { setFinalActive(false); setJourneyActive(false) }}>Salir ×</button>
           </div>
-          <p className="journey__speed">velocidad de la luz <span>••••••••</span></p>
+          <p className="journey__speed">fuerza de velocidad <span>••••••••</span></p>
+        </section>
+      )}
+      {finalActive && (
+        <section className="finale" aria-labelledby="finale-title">
+          <div className="finale__heading">
+            <p className="eyebrow">capítulo uno / la llegada</p>
+            <h2 id="finale-title">Contigo,<br /><i>todo es mejor.</i></h2>
+          </div>
+          <div className="finale__message">
+            <p>Hay lugares que no aparecen en ningún mapa. Este se encuentra entre una sonrisa, una flor y todo lo que todavía falta por descubrir.</p>
+            <span>— siempre tuyo, el jardín del espacio</span>
+          </div>
+          <div className="finale__flower" aria-hidden="true"><span className="flower__petals" /><span className="flower__center" /><span className="flower__stem" /></div>
         </section>
       )}
     </main>
