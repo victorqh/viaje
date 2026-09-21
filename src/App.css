@@ -344,7 +344,7 @@ body.journey-is-open { overflow: hidden; }
   .journey-phrase--7 { right: 10%; bottom: 8%; }
   .journey-phrase--8 { left: 15%; bottom: 9%; }
   .journey-phrase--9 { right: 13%; top: 10%; }
-  .finale { display: flex; flex-direction: column; align-items: flex-start; gap: 0; height: 100dvh; padding: clamp(58px, 13vw, 90px) 10vw 112px; overflow: hidden; }
+  .finale { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; height: 100dvh; padding: clamp(58px, 13vw, 90px) 10vw 112px; overflow: hidden; }
   .finale__heading { width: 100%; }
   .finale h2 { font-size: clamp(54px, 17vw, 92px); letter-spacing: -3px; line-height: .78; }
   .finale__message { width: min(100%, 330px); margin: 34px 0 0; }
