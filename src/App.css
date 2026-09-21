@@ -248,12 +248,12 @@ body.journey-is-open { overflow: hidden; }
   background-position: 200px 10px;
 }
 .journey__flowers { position: absolute; inset: 0; z-index: 2; perspective: 500px; }
-.journey-flower {
+.journey-flower { 
   position: absolute;
   width: 60px;
   height: 60px;
   transform: translate(-50%, -50%);
-  animation: flower-rush 2.5s linear infinite;
+  animation: flower-rush 6s linear infinite;
   will-change: transform, opacity;
 }
 .journey-flower .flower__petals { background: radial-gradient(ellipse at 50% 8%, #fff5a0 0 23%, transparent 25%), radial-gradient(ellipse at 92% 50%, var(--sun) 0 23%, transparent 25%), radial-gradient(ellipse at 50% 92%, #ffe26b 0 23%, transparent 25%), radial-gradient(ellipse at 8% 50%, var(--sun) 0 23%, transparent 25%); }
@@ -267,9 +267,9 @@ body.journey-is-open { overflow: hidden; }
   border-radius: 42%;
   transform: rotate(22deg) scale(.9);
 }
-.journey-flower--depth-0 { width: 34px; height: 34px; opacity: .62; --rush-scale: 2.8; animation-duration: 3.7s; }
-.journey-flower--depth-1 { width: 70px; height: 70px; --rush-scale: 3.4; animation-duration: 2.8s; }
-.journey-flower--depth-2 { width: 115px; height: 115px; --rush-scale: 3.9; animation-duration: 2.1s; filter: drop-shadow(0 0 18px rgba(245, 201, 40, .42)); }
+.journey-flower--depth-0 { width: 34px; height: 34px; opacity: .62; --rush-scale: 2.8; animation-duration: 7.2s; }
+.journey-flower--depth-1 { width: 70px; height: 70px; --rush-scale: 3.4; animation-duration: 6.2s; }
+.journey-flower--depth-2 { width: 115px; height: 115px; --rush-scale: 3.9; animation-duration: 5.4s; filter: drop-shadow(0 0 18px rgba(245, 201, 40, .42)); }
 .journey__phrases { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
 .journey-phrase { position: absolute; margin: 0; color: var(--paper); font: clamp(19px, 3vw, 43px) var(--serif); white-space: nowrap; text-shadow: 0 0 18px rgba(245, 201, 40, .36); animation: phrase-rush 6s linear infinite; will-change: transform, opacity; }
 .journey-phrase--0 { left: 8%; top: 22%; }
@@ -287,7 +287,7 @@ body.journey-is-open { overflow: hidden; }
 .journey__arrival-light::before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 12px; border-radius: 50%; background: #fff9cb; box-shadow: 0 0 14px 5px var(--sun), 0 0 75px 26px rgba(245, 201, 40, .4); transform: translate(-50%, -50%); }
 .journey__arrival-light:focus-visible { outline: 2px solid var(--soft-sun); outline-offset: 12px; }
 .journey__arrival-hint { position: absolute; top: calc(50% + 78px); left: 50%; margin: 0; color: rgba(255, 249, 223, .72); font: 10px var(--mono); letter-spacing: 1.5px; text-transform: uppercase; opacity: 0; transform: translate(-50%, 8px); animation: arrival-hint-reveal .8s 20s ease-out forwards; }
-.finale { position: fixed; z-index: 30; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .8fr); align-items: center; gap: clamp(40px, 8vw, 130px); padding: clamp(70px, 12vw, 170px); overflow: hidden; background: #d4b629; color: var(--ink); animation: journey-enter .8s ease both; }
+.finale { position: fixed; z-index: 30; inset: 0; width: 100%; height: 100dvh; min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .8fr); align-items: center; gap: clamp(40px, 8vw, 130px); padding: clamp(70px, 12vw, 170px); overflow: hidden; background: #d4b629; color: var(--ink); animation: journey-enter .8s ease both; }
 .finale::before { content: ''; position: absolute; width: 55vw; height: 55vw; right: -14vw; bottom: -28vw; border-radius: 50%; background: #f7df67; }
 .finale__heading, .finale__message { position: relative; z-index: 1; }
 .finale .eyebrow { color: #685314; }
@@ -344,12 +344,21 @@ body.journey-is-open { overflow: hidden; }
   .journey-phrase--7 { right: 10%; bottom: 8%; }
   .journey-phrase--8 { left: 15%; bottom: 9%; }
   .journey-phrase--9 { right: 13%; top: 10%; }
-  .finale { display: flex; flex-direction: column; align-items: flex-start; gap: 0; padding: clamp(70px, 16vw, 115px) 10vw 175px; overflow-y: auto; }
+  .finale { display: flex; flex-direction: column; align-items: flex-start; gap: 0; height: 100dvh; padding: clamp(58px, 13vw, 90px) 10vw 112px; overflow: hidden; }
   .finale__heading { width: 100%; }
   .finale h2 { font-size: clamp(54px, 17vw, 92px); letter-spacing: -3px; line-height: .78; }
-  .finale__message { width: min(100%, 330px); margin: 42px 0 0; }
+  .finale__message { width: min(100%, 330px); margin: 34px 0 0; }
   .finale__message p { font-size: 12px; line-height: 1.75; }
   .finale__message span { margin-top: 18px; }
-  .finale__flower { right: 8vw; bottom: 18px; width: 82px; height: 82px; }
-  .finale__flower .flower__stem { height: 135px; }
+  .finale__flower { right: 8vw; bottom: 42px; width: 74px; height: 74px; }
+  .finale__flower .flower__stem { height: 108px; }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+  .finale { padding-top: 42px; padding-bottom: 82px; }
+  .finale h2 { font-size: clamp(46px, 15vw, 72px); }
+  .finale__message { margin-top: 22px; }
+  .finale__message p { line-height: 1.55; }
+  .finale__flower { width: 58px; height: 58px; bottom: 28px; }
+  .finale__flower .flower__stem { height: 78px; }
 }
